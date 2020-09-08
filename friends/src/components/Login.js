@@ -29,12 +29,12 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTimeout(function () {
-      return setValues({
-        ...values,
-        isLoading: true,
-      });
-    }, 500);
+    // setTimeout(function () {
+    //   return setValues({
+    //     ...values,
+    //     isLoading: true,
+    //   });
+    // }, 500);
 
     // defaultValues.isLoading = true;
     console.log("i am the value of isLoading", values.isLoading);
@@ -47,15 +47,15 @@ const Login = (props) => {
       .then((res) => {
         console.log("I am the result", res.data);
         localStorage.setItem("token", res.data.payload);
-        // this.props.history.push("/friendslist");
-        setValues({
-          ...values.credentials,
-          credentials: {
-            username: "",
-            password: "",
-          },
-          isLoading: false,
-        });
+        props.history.push("/friendsList");
+        // setValues({
+        //   ...values.credentials,
+        //   credentials: {
+        //     username: "",
+        //     password: "",
+        //   },
+        //   // isLoading: false,
+        // });
       })
       .catch((err) => console.log(err));
   };
