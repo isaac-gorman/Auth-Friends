@@ -20,6 +20,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/friendsList" component={FriendsList} />
       </Switch>
+
       {/* <Route exact path="/">
         <StartScreen />
       </Route> */}

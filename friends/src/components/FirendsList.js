@@ -39,6 +39,13 @@ const FriendsList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axiosWithAuth()
+      .post("api/friends", values.newFriend)
+      .then((res) => {
+        console.log("i am the result of adding new friend", res.data);
+        setValues({ ...values, friends: res.data });
+      })
+      .catch((err) => console.log("Something went worng", err));
   };
 
   return (
@@ -51,6 +58,26 @@ const FriendsList = () => {
             type="text"
             name="name"
             value={values.newFriend.name}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor="age">
+          Age:&nbsp;{" "}
+          <input
+            type="text"
+            name="age"
+            value={values.newFriend.age}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor="email">
+          Email:&nbsp;{" "}
+          <input
+            type="text"
+            name="email"
+            value={values.newFriend.email}
             onChange={handleChange}
           />
         </label>
